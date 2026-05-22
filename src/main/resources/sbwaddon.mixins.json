@@ -3,9 +3,7 @@
   "package": "com.example.sbwaddon.mixin",
   "compatibilityLevel": "JAVA_17",
   "refmap": "sbwaddon.refmap.json",
-  "mixins": [
-    "VehiclePassengerMixin"
-  ],
+  "mixins": [],
   "client": [],
   "minVersion": "0.8"
 }

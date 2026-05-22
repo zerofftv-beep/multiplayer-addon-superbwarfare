@@ -1,17 +1,13 @@
-name: Build Minecraft Mods
+name: Build Superb Warfare Multiplayer Addon
 
-on:
-  push:
-    branches: [ main, master ]
-  pull_request:
-    branches: [ main, master ]
+on: [push, pull_request]
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
 
       - name: Set up JDK 17
@@ -20,21 +16,16 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Grant execute permission for gradlew
-        run: chmod +x */gradlew
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: 8.5
 
-      - name: Build Multiplayer Addon
-        working-directory: superbwarfare-multiplayer-addon
-        run: ./gradlew build
+      - name: Build mod
+        run: gradle build --no-daemon
 
-      - name: Build SBW Teams
-        working-directory: sbw-teams
-        run: ./gradlew build
-
-      - name: Upload artifacts
+      - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: built-mods
-          path: |
-            superbwarfare-multiplayer-addon/build/libs/*.jar
-            sbw-teams/build/libs/*.jar
+          name: sbw-multiplayer-addon
+          path: build/libs/*.jar

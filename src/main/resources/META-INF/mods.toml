@@ -1,0 +1,24 @@
+modLoader="javafml"
+loaderVersion="[47,)"
+license="All rights reserved"
+
+[[mods]]
+modId="sbwaddon"
+version="1.0.0"
+displayName="Superb Warfare Multiplayer Vehicles"
+authors="YourName"
+description="Allows multiple players to ride in Superb Warfare vehicles."
+
+[[dependencies.sbwaddon]]
+modId="forge"
+mandatory=true
+versionRange="[47.3,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.sbwaddon]]
+modId="superbwarfare"
+mandatory=true
+versionRange="[0.8,)"
+ordering="AFTER"
+side="BOTH"
